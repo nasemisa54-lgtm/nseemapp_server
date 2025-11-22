@@ -1,0 +1,18 @@
+{
+  "name": "nseemapp_server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+  "start":"nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "http": "^0.0.1-security",
+    "mongoose": "^8.19.4",
+    "nodemon": "^3.1.11"
+  }
+}
