@@ -1,10 +1,11 @@
 const express = require("express");
 var cors = require("cors");
 const mongoose = require("mongoose");
-const { creatuser } = require("./api/controllers/user.controller");
+const route = require("./api/route/route");
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(route);
 
 const mongourl ="mongodb+srv://nseem:123456780@cluster0.hepayzq.mongodb.net/"
 
@@ -12,14 +13,19 @@ mongoose.connect(mongourl);
 
 mongoose.connection.on("connected" ,() =>{
 console.log("mongo connected");
-
 });
+
 mongoose.connection.on("error" , (err) => {
 console.error("mongoDB connection error:", err);
 });
 
 
+app.get("/", (req, res) => {
+   res.status(200).json({
+      message:"server is live 🤷‍♂️"
 
+   })
+})
 
 app.get("/main", (req, res) => {
    res.status(200).json({
@@ -47,6 +53,7 @@ app.post("/youareadult", (req, res) => {
       })
    }
 })
+
 app.post("/sum", (req, res) => {
    const { num1, num2 } = req.body
    return res.status(200).json({
@@ -61,8 +68,6 @@ app.post("/averag", (req, res) => {
       message: (m1 + m2 + m3)/3
    })
 })
-
-
 
 app.post("/order", (req, res) => {
    const { order } = req.body;
@@ -80,6 +85,5 @@ app.post("/order", (req, res) => {
    });
 });
 
-app.post('/creatuser', creatuser)
 
 module.exports = app  
