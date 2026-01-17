@@ -10,6 +10,7 @@ const createuser = async (req, res) => {
         numberphone,
         password,
         image,
+        email,
     } = req.body
 
     try {
@@ -20,6 +21,7 @@ const createuser = async (req, res) => {
             numberphone,
             password,
             image,
+            email,
         })
         res.status(200).json({
             user,
@@ -35,10 +37,11 @@ const createuser = async (req, res) => {
 
     }
 };
+
 const login = async (req, res) => {
     try {
-        const { numberphone, password } = req.body;
-        const user = await USER_MODEL.findOne({ numberphone });
+        const { email, password } = req.body;
+        const user = await USER_MODEL.findOne({ email });
         if (!user) {
             res.status(400).json({
                 success: false,
