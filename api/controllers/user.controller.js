@@ -36,9 +36,8 @@ const createuser = async (req, res) => {
     }
 };
 const login = async (req, res) => {
-    const { numberphone, password, } = req.body;
     try {
-        const { phonenumber, password } = req.body;
+        const { numberphone, password } = req.body;
         const user = await USER_MODEL.findOne({ numberphone });
         if (!user) {
             res.status(400).json({
@@ -51,7 +50,7 @@ const login = async (req, res) => {
             res.status(200).json({
                 user,
                 success: true,
-                message: "wrong password"
+                message: "welcome "+user.name
             });
         }
         else {

@@ -16,10 +16,10 @@ const USER_SCHEMA = new Schema({
         max: 60,
         max: 2
     },
-    numberphone: {
+    email: {
         type: String,
         required: true,
-        match: [/^\d{10}$/, "phone number most be 10 digits"]
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please fill a valid email address"]
     },
     password: {
         type: String,
@@ -28,7 +28,7 @@ const USER_SCHEMA = new Schema({
     },
     image: {
         type: String,
-        required:false
+        required: false
     }
 });
 
