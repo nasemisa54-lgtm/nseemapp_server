@@ -53,7 +53,7 @@ const login = async (req, res) => {
             res.status(200).json({
                 user,
                 success: true,
-                message: "welcome "+user.name
+                message: "welcome " + user.name
             });
         }
         else {
@@ -74,8 +74,35 @@ const login = async (req, res) => {
     }
 };
 
+const UpdateUser = async (req, res) => {
+    try {
+        const { _id, UpdateUser } = req.body;
+        const NewUser = await USER_MODEL.findOneAndUpdate(
+            { _id },
+            UpdateUser,
+            { new: true, runValidators: true, lean: true, }
+        )
+        res.status(200).json({
+            success: !!NewUser,
+            message: !!NewUser ? "user Update😎" : "faild ‼",
+            NewUser
+        }
+        )
+    }
+    catch (error) {
+        res.status(200).json({
+            success: false,
+            errormessage: error.message,
+            message: "i am sorry🍔🍟"
+        }
+        )
+
+    }
+}
+
 module.exports = {
     createuser,
     login,
+    UpdateUser,
 };
 
