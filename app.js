@@ -7,7 +7,8 @@ app.use(express.json());
 app.use(cors());
 app.use(route);
 
-const mongourl ="mongodb+srv://nseem:123456780@cluster0.hepayzq.mongodb.net/"
+// const mongourl ="mongodb+srv://nseem:123456780@cluster0.hepayzq.mongodb.net/"
+const mongourl ="mongodb+srv://NSEEM:<NE1234>@cluster0.sg1be2l.mongodb.net/"
 
 mongoose.connect(mongourl);
 
